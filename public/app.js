@@ -1,8 +1,10 @@
+const message=document.querySelector("#message")
+message.textContent="Identify yourself with google."
 const auth=firebase.auth()
 const provider=new firebase.auth.GoogleAuthProvider();
 
 
-const loginBtn=document.querySelector("#loginButton")
+const loginBtn=document.querySelector("#googleLogin")
 const logoutBtn=document.querySelector("#logoutButton")
 
 loginBtn.addEventListener("click",()=>{
@@ -15,11 +17,11 @@ logoutBtn.addEventListener("click",()=>{
 
 auth.onAuthStateChanged((user)=>{
     if(user){
-        console.log("User is present")
+        message.textContent="Thank you for your identification. You can logout."
         loginBtn.hidden=true
         logoutBtn.hidden=false
     }else{
-        console.log("User loged out")
+        message.textContent="Identify yourself with google."
         loginBtn.hidden=false
         logoutBtn.hidden=true
     }
